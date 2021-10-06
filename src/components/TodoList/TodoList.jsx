@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import { editTodo, getTodos } from "../../services/todos.service";
+import { editTodo } from "../../services/todos.service";
+import { getUsers } from "../../services/users.service";
 import "./TodoList.scss";
 
-const TodoList = ({ userId, setTodos, todos }) => {
+const TodoList = ({ userId, setUsers, todos }) => {
   const handleCompleteTodo = (userId, todoId) => {
     editTodo(userId, todoId);
-    getTodos(userId).then((res) => setTodos(res));
+    getUsers().then((res) => setUsers(res));
   };
 
   return (

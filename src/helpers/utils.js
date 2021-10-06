@@ -4,6 +4,10 @@ export const countCompletionRate = (arr = []) => {
   return allTodos ? Math.round((completedTodos / allTodos) * 100) : 0;
 };
 
-export const findUser = (users, id) => {
-  return users.find((user) => user.id === id);
+export function findUserTodos(users, userId) {
+  return users.find((user) => user.id === userId).todos;
+}
+
+export const findUserName = (users, id) => {
+  return users.find((user) => user.id === id).name;
 };
