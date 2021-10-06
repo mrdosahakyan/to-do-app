@@ -3,11 +3,13 @@ import { countCompletionRate, findUserName } from "../../helpers/utils";
 import { useEffect, useState } from "react";
 import TodoManager from "../TodoManager/TodoManager";
 import { getUsers } from "../../services/users.service";
+import { getTodos } from "../../services/todos.service";
 
 const UsersTable = () => {
   const [users, setUsers] = useState();
   const [showTodoManager, setShowTodoManager] = useState(false);
   const [currUserId, setCurrUserId] = useState();
+  const [todos, setTodos] = useState();
 
   const handleRowClick = (id) => {
     setShowTodoManager(true);
@@ -15,8 +17,15 @@ const UsersTable = () => {
   };
   useEffect(() => {
     getUsers().then((res) => setUsers(res));
-  }, []);
-  // console.log(users);
+    console.log('get users');
+  }, [todos]);
+
+  useEffect(() => {
+    getTodos(currUserId).then((res) => {
+      setTodos(res);
+    });
+  }, [currUserId]);
+  
   return (
     <div className="usersTable">
       <table>
@@ -40,6 +49,8 @@ const UsersTable = () => {
       </table>
       {showTodoManager && (
         <TodoManager
+        todos={todos}
+        setTodos={setTodos}
           show={setShowTodoManager}
           userId={currUserId}
           userName={findUserName(users, currUserId)}

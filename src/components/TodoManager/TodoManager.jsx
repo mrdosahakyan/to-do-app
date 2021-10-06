@@ -4,15 +4,9 @@ import TodoForm from "../TodoForm/TodoForm";
 import TodoList from "../TodoList/TodoList";
 import "./TodoManager";
 
-const TodoManager = ({ userId, userName, show }) => {
-  const [todos, setTodos] = useState();
+const TodoManager = ({setTodos, todos, userId, userName, show }) => {
 
-  useEffect(() => {
-    getTodos(userId).then((res) => {
-      setTodos(res);
-      console.log("get todos");
-    });
-  }, [userId]);
+
 
   //   console.log(userId);
   return (
