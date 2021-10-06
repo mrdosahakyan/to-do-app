@@ -1,12 +1,14 @@
 import TodoForm from '../TodoForm/TodoForm';
+import TodoList from '../TodoList/TodoList';
 import './TodoManager'
 
-const TodoManager = ({userData}) => {
-    console.log(userData);
+const TodoManager = ({userId, userName,show}) => {
+    
     return(
         <div>
-            <TodoForm />
-            <h1>hello {userData.name}</h1>
+            <TodoForm userId={userId} show={show} />
+            <h1>hello {userName}</h1>
+            <TodoList userId={userId} />
         </div>
     )
 }

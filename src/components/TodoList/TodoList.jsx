@@ -1,9 +1,33 @@
-import './TodoList.scss'
+import { useEffect, useState } from "react";
+import { editTodo, getTodos } from "../../services/todos.service";
+import "./TodoList.scss";
 
-const TodoList = () => {
-    return(
-        <div></div>
-    )
-} 
+const TodoList = ({ userId }) => {
+  const [todos, setTodos] = useState()
+  const handleCompleteTodo = (userId,todoId) =>{
+    editTodo(userId,todoId)
+    getTodos(userId).then(res=>setTodos(res))
+  }
+    useEffect(()=>{
+      getTodos(userId).then(res=>setTodos(res))
+    },[])
 
-export default TodoList
+  return (
+    <div>
+      <ul>
+        {todos &&
+          todos.map((todo) => {
+            return (
+              <li key={todo.id}>
+                <span>{todo.status}</span>
+                <p>{todo.title}</p>
+                <button onClick={()=>handleCompleteTodo(userId,todo.id)}>mark us done</button>
+              </li>
+            );
+          })}
+      </ul>
+    </div>
+  );
+};
+
+export default TodoList;
