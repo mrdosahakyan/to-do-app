@@ -2,15 +2,11 @@ import { useEffect, useState } from "react";
 import { editTodo, getTodos } from "../../services/todos.service";
 import "./TodoList.scss";
 
-const TodoList = ({ userId }) => {
-  const [todos, setTodos] = useState()
-  const handleCompleteTodo = (userId,todoId) =>{
-    editTodo(userId,todoId)
-    getTodos(userId).then(res=>setTodos(res))
-  }
-    useEffect(()=>{
-      getTodos(userId).then(res=>setTodos(res))
-    },[])
+const TodoList = ({ userId, setTodos, todos }) => {
+  const handleCompleteTodo = (userId, todoId) => {
+    editTodo(userId, todoId);
+    getTodos(userId).then((res) => setTodos(res));
+  };
 
   return (
     <div>
@@ -21,7 +17,9 @@ const TodoList = ({ userId }) => {
               <li key={todo.id}>
                 <span>{todo.status}</span>
                 <p>{todo.title}</p>
-                <button onClick={()=>handleCompleteTodo(userId,todo.id)}>mark us done</button>
+                <button onClick={() => handleCompleteTodo(userId, todo.id)}>
+                  mark us done
+                </button>
               </li>
             );
           })}

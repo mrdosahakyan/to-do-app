@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { addTodo } from "../../services/todos.service";
+import { addTodo, getTodos } from "../../services/todos.service";
 import "./TodoForm.scss";
 
-const TodoForm = ({ userId, show }) => {
+const TodoForm = ({ userId, show, setTodos }) => {
   const [inputValue, setInputValue] = useState("");
   const [showInput, setShowInput] = useState(false);
 
   const handleSaveTodoClick = (userId, title) => {
     addTodo(userId, title);
+    getTodos(userId).then((res) => setTodos(res));
     setInputValue("");
     setShowInput(false);
   };
