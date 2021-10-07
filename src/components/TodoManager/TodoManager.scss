@@ -1,0 +1,33 @@
+@import "../../styles/variables.scss";
+
+.todoManager {
+  width: 640px;
+  height: 580px;
+  // left: 640px;
+  // top: 213px;
+
+  background-color: $main-bg-color;
+  border-radius: 24px;
+  padding: 26px;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    background-color: #ddeef8;
+    width: 10px;
+    border-radius: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(86, 182, 234, 0.38);
+    border-radius: 6px;
+  }
+  &::-webkit-scrollbar-track {
+  }
+  
+  h1 {
+    font-weight: 900;
+    font-size: 20px;
+    color: $main-color;
+    line-height: 23px;
+    margin: 41px 0;
+  }
+}

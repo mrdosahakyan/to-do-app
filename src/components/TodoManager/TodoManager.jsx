@@ -1,14 +1,12 @@
-import { useEffect, useState } from "react";
-import { getTodos } from "../../services/todos.service";
 import TodoForm from "../TodoForm/TodoForm";
 import TodoList from "../TodoList/TodoList";
-import "./TodoManager";
+import "./TodoManager.scss";
 
-const TodoManager = ({ todos, userId, userName, show, setUsers }) => {
+const TodoManager = ({ todos, userId, userName, show, setUsers, setCurrUserId }) => {
   return (
-    <div>
-      <TodoForm setUsers={setUsers} userId={userId} show={show} />
-      <h1>hello {userName}</h1>
+    <div className='todoManager'>
+      <TodoForm setCurrUserId={setCurrUserId} setUsers={setUsers} userId={userId} show={show} />
+      <h1>To-do list for {userName}</h1>
       <TodoList setUsers={setUsers} todos={todos} userId={userId} />
     </div>
   );
