@@ -13,7 +13,7 @@ A simple user-based to-do list
  
 ### Used Libraries
 
-React, Firebase, SASS, Classnames, ReactIcons, PropTypes   
+React, Firebase, SASS, Classnames, ReactIcons   
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
