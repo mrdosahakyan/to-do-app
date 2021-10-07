@@ -1,10 +1,11 @@
 @import "../../styles/variables.scss";
 
 .todoManager {
+  position: absolute;
   width: 640px;
-  height: 580px;
-  // left: 640px;
-  // top: 213px;
+  height: 596px;
+  left: 640px;
+  top: 213px;
 
   background-color: $main-bg-color;
   border-radius: 24px;

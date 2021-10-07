@@ -2,6 +2,8 @@ import { useState } from "react";
 import { addTodo } from "../../services/todos.service";
 import { getUsers } from "../../services/users.service";
 import "./TodoForm.scss";
+import { MdAdd, MdOutlineClose, MdDone } from 'react-icons/md'
+
 
 const TodoForm = ({ userId, show, setUsers, setCurrUserId }) => {
   const [inputValue, setInputValue] = useState("");
@@ -34,12 +36,12 @@ const TodoForm = ({ userId, show, setUsers, setCurrUserId }) => {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
           />
-          <button className='todoForm-addBtn' type="submit">V</button>
+          <button className='todoForm-addBtn' type="submit"><MdDone /></button>
         </form>
       ) : (
-        <button className='todoForm-addBtn' onClick={handleAddTodoClick}> + </button>
+        <button className='todoForm-addBtn' onClick={handleAddTodoClick}> <MdAdd /> </button>
       )}
-      <button className='todoForm-closeBtn' onClick={handleCloseBtn}>X</button>
+      <button className='todoForm-closeBtn' onClick={handleCloseBtn}><MdOutlineClose/></button>
     </div>
   );
 };

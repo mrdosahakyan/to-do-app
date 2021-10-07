@@ -1,6 +1,8 @@
 import { editTodo } from "../../services/todos.service";
 import { getUsers } from "../../services/users.service";
 import "./TodoList.scss";
+import { MdDone, MdAvTimer } from 'react-icons/md'
+
 
 const TodoList = ({ userId, setUsers, todos }) => {
   const handleCompleteTodo = (userId, todoId) => {
@@ -23,7 +25,7 @@ const TodoList = ({ userId, setUsers, todos }) => {
                       : "todoList_item_status-completed"
                   }
                 >
-                  {completed ? "Pending" : "Completed"}
+                  {completed ? <> <MdAvTimer/> Pending </> : <> <MdDone/> Completed </>}
                 </span>
                 <p className="todoList_item_title">{todo.title}</p>
               </div>

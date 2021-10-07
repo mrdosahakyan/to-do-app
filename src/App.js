@@ -1,16 +1,10 @@
+import UsersTable from "./components/UsersTable/UsersTable";
 
 function App() {
   return (
-    <div >
-    
-    
-    
-    
-    
-    
-    
-    
-        </div>
+    <div>
+      <UsersTable />
+    </div>
   );
 }
 
