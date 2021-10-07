@@ -1,0 +1,27 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+.todoList_item {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-radius: 24px;
+    margin: 16px 0;
+    .todoList_item_status-pending {
+      @include Status($bg-color: $complete-status-color);
+    }
+    .todoList_item_status-completed {
+      @include Status($bg-color: $incomplete-status-color);
+    }
+    .todoList_item_title {
+      font-size: 18px;
+    }
+    .todoList_item_enableBtn {
+      @include BtnMarkUsDone($bg-color: $main-color, $cursor: pointer);
+    }
+    .todoList_item_disableBtn {
+      @include BtnMarkUsDone($bg-color: #c7c7c7, $cursor: not-allowed);
+    }
+  }
