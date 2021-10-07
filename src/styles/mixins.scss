@@ -3,3 +3,25 @@
     justify-content: center;
     align-items: center;
 }
+
+@mixin BtnMarkUsDone ($bg-color: blue, $cursor:pointer) {
+    background-color: $bg-color;
+    cursor: $cursor;
+    font-size: 18px;
+    font-weight: 300;
+    border-radius: 24px;
+    border: none;
+    color: white;
+    height: 37px;
+    min-width: 155px;
+    margin-left: 20px;
+}
+
+@mixin Status ($bg-color: orange) {
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 24px;
+    background-color: $bg-color;
+    color: white;
+    padding: 4px 16px;
+}

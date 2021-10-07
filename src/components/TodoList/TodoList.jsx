@@ -9,21 +9,38 @@ const TodoList = ({ userId, setUsers, todos }) => {
   };
 
   return (
-    <div>
-      <ul>
-        {todos &&
-          todos.map((todo) => {
-            return (
-              <li key={todo.id}>
-                <span>{todo.status}</span>
-                <p>{todo.title}</p>
-                <button onClick={() => handleCompleteTodo(userId, todo.id)}>
-                  mark us done
-                </button>
-              </li>
-            );
-          })}
-      </ul>
+    <div className="todoList">
+      {todos &&
+        todos.map((todo) => {
+          const completed = todo.status === "incomplete";
+          return (
+            <div key={todo.id} className="todoList_item">
+              <div>
+                <span
+                  className={
+                    completed
+                      ? "todoList_item_status-pending"
+                      : "todoList_item_status-completed"
+                  }
+                >
+                  {completed ? "Pending" : "Completed"}
+                </span>
+                <p className="todoList_item_title">{todo.title}</p>
+              </div>
+              <button
+                disabled={!completed}
+                onClick={() => handleCompleteTodo(userId, todo.id)}
+                className={
+                  completed
+                    ? "todoList_item_enableBtn"
+                    : "todoList_item_disableBtn"
+                }
+              >
+                Mark us done
+              </button>
+            </div>
+          );
+        })}
     </div>
   );
 };
