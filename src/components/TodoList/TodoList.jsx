@@ -2,6 +2,7 @@ import { editTodo } from "../../services/todos.service";
 import { getUsers } from "../../services/users.service";
 import "./TodoList.scss";
 import { MdDone, MdAvTimer } from 'react-icons/md'
+import { STATUS } from "../../constants/status";
 
 
 const TodoList = ({ userId, setUsers, todos }) => {
@@ -14,23 +15,23 @@ const TodoList = ({ userId, setUsers, todos }) => {
     <div className="todoList">
       {todos &&
         todos.map((todo) => {
-          const completed = todo.status === "incomplete";
+          const complete = todo.status === STATUS.PENDING;
           return (
             <div key={todo.id} className="todoList_item">
               <div>
                 <span
                   className={
-                    completed
+                    complete
                       ? "todoList_item_status-pending"
                       : "todoList_item_status-completed"
                   }
                 >
-                  {completed ? <> <MdAvTimer/> Pending </> : <> <MdDone/> Completed </>}
+                  {complete ? <> <MdAvTimer/> Pending </> : <> <MdDone/> Completed </>}
                 </span>
                 <p className="todoList_item_title">{todo.title}</p>
               </div>
               <button
-                disabled={!completed}
+                disabled={!complete}
                 onClick={() => handleCompleteTodo(userId, todo.id)}
                 className={
                   completed

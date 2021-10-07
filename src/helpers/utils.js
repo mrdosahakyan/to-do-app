@@ -1,6 +1,8 @@
+import { STATUS } from "../constants/status";
+
 export const countCompletionRate = (arr = []) => {
   const allTodos = arr.length;
-  const completedTodos = arr.filter((el) => el.status === "complete").length;
+  const completedTodos = arr.filter((el) => el.status === STATUS.COMPLETED).length;
   return allTodos ? Math.round((completedTodos / allTodos) * 100) : 0;
 };
 
