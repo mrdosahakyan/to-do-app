@@ -1,5 +1,6 @@
-import "./TodoListItem.scss";
+import cn from "classnames";
 import { MdDone, MdAvTimer } from "react-icons/md";
+import "./TodoListItem.scss";
 import { STATUS } from "../../constants/status";
 
 const TodoListItem = ({ id, status, title, handleClick }) => {
@@ -8,11 +9,10 @@ const TodoListItem = ({ id, status, title, handleClick }) => {
     <div key={id} className="todoList_item">
       <div>
         <span
-          className={
-            complete
-              ? "todoList_item_status-pending"
-              : "todoList_item_status-completed"
-          }
+          className={cn(
+            { "todoList_item_status-pending": complete },
+            { "todoList_item_status-completed": !complete }
+          )}
         >
           {complete ? (
             <>
@@ -29,9 +29,10 @@ const TodoListItem = ({ id, status, title, handleClick }) => {
       <button
         disabled={!complete}
         onClick={handleClick}
-        className={
-          complete ? "todoList_item_enableBtn" : "todoList_item_disableBtn"
-        }
+        className={cn(
+          { 'todoList_item_enableBtn': complete },
+          { 'todoList_item_disableBtn': !complete }
+        )}
       >
         Mark us done
       </button>

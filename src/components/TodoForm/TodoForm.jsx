@@ -1,8 +1,8 @@
 import { useState } from "react";
+import { MdAdd, MdOutlineClose, MdDone } from 'react-icons/md'
+import "./TodoForm.scss";
 import { addTodo } from "../../services/todos.service";
 import { getUsers } from "../../services/users.service";
-import "./TodoForm.scss";
-import { MdAdd, MdOutlineClose, MdDone } from 'react-icons/md'
 
 
 const TodoForm = ({ userId, show, setUsers, setCurrUserId }) => {
@@ -12,7 +12,6 @@ const TodoForm = ({ userId, show, setUsers, setCurrUserId }) => {
   const handleSaveTodoClick = (userId, title) => {
     addTodo(userId, title);
     getUsers().then((res) => setUsers(res));
-
     setInputValue("");
     setShowInput(false);
   };
@@ -20,6 +19,7 @@ const TodoForm = ({ userId, show, setUsers, setCurrUserId }) => {
   const handleAddTodoClick = () => {
     setShowInput(true);
   };
+
   const handleCloseBtn = () => {
     show(false);
     setCurrUserId('')
