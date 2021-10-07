@@ -1,5 +1,4 @@
-import * as React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext } from "react";
 import cn from "classnames";
 import "./UsersTable.scss";
 import TodoManager from "../TodoManager/TodoManager";
@@ -10,8 +9,8 @@ import {
 } from "../../helpers/utils";
 import { getUsers } from "../../services/users.service";
 
-export const CurrentUserContext = React.createContext();
-export const SetUsersContext = React.createContext();
+export const CurrentUserContext = createContext();
+export const SetUsersContext = createContext();
 
 const UsersTable = () => {
   const [users, setUsers] = useState();
