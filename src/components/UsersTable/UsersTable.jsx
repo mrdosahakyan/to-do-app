@@ -24,25 +24,25 @@ const UsersTable = () => {
 
   return (
     <div className="usersTable">
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Completion rate (%)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.length &&
-            users.map((user) => {
-              return (
-                <tr key={user.id} onClick={() => handleRowClick(user.id)}>
-                  <td>{user.name}</td>
-                  <td>{countCompletionRate(user.todos)}</td>
-                </tr>
-              );
-            })}
-        </tbody>
-      </table>
+      <div className="usersTable_header">
+        <span className="tableItem">Name</span>
+        <span className="tableItem">Completion rate (%)</span>
+      </div>
+      {users.length &&
+        users.map((user) => {
+          return (
+            <div
+              className="usersTable_row"
+              key={user.id}
+              onClick={() => handleRowClick(user.id)}
+            >
+              <span className="tableItem">{user.name}</span>
+              <span className="tableItem">
+                {countCompletionRate(user.todos)}
+              </span>
+            </div>
+          );
+        })}
       {showTodoManager && (
         <TodoManager
           todos={findUserTodos(users, currUserId)}
