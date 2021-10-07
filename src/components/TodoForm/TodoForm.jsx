@@ -3,7 +3,7 @@ import { addTodo } from "../../services/todos.service";
 import { getUsers } from "../../services/users.service";
 import "./TodoForm.scss";
 
-const TodoForm = ({ userId, show, setUsers }) => {
+const TodoForm = ({ userId, show, setUsers, setCurrUserId }) => {
   const [inputValue, setInputValue] = useState("");
   const [showInput, setShowInput] = useState(false);
 
@@ -20,24 +20,26 @@ const TodoForm = ({ userId, show, setUsers }) => {
   };
   const handleCloseBtn = () => {
     show(false);
+    setCurrUserId('')
   };
 
   return (
-    <div>
+    <div className='todoForm'>
       {showInput ? (
         <form onSubmit={() => handleSaveTodoClick(userId, inputValue)}>
           <input
             required
+            placeholder='New to-do description'
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
           />
-          <button type="submit">Save Todo</button>
+          <button className='todoForm-addBtn' type="submit">V</button>
         </form>
       ) : (
-        <button onClick={handleAddTodoClick}>Add Todo</button>
+        <button className='todoForm-addBtn' onClick={handleAddTodoClick}> + </button>
       )}
-      <button onClick={handleCloseBtn}>X</button>
+      <button className='todoForm-closeBtn' onClick={handleCloseBtn}>X</button>
     </div>
   );
 };

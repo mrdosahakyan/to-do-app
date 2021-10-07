@@ -1,0 +1,41 @@
+@import '../../styles/variables.scss';
+.todoForm{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    form{
+        height: 48px;
+        display: flex;
+        transition: 50ms;
+        input{
+            border: none;
+            height: inherit;
+            border-radius: 8px 0 0 8px;
+            color: black;
+            font-size: $main-font-size;
+            width: 480px;
+            padding: 20px
+        }
+    }
+}
+.todoForm-addBtn{
+    width: 48px;
+    height: 48px;
+    border-radius: $btn-border-radius;
+    background-color: $main-color;
+    color: white;
+    border: none;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.todoForm-closeBtn{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    color: $main-color;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    font-weight: 900;
+}
