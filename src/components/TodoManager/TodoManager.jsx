@@ -1,13 +1,13 @@
+import "./TodoManager.scss";
 import TodoForm from "../TodoForm/TodoForm";
 import TodoList from "../TodoList/TodoList";
-import "./TodoManager.scss";
 
-const TodoManager = ({ todos, userId, userName, show, setUsers, setCurrUserId }) => {
+const TodoManager = ({ todos, userName }) => {
   return (
-    <div className='todoManager'>
-      <TodoForm setCurrUserId={setCurrUserId} setUsers={setUsers} userId={userId} show={show} />
+    <div className="todoManager">
+      <TodoForm />
       <h1>To-do list for {userName}</h1>
-      <TodoList setUsers={setUsers} todos={todos} userId={userId} />
+      <TodoList todos={todos} />
     </div>
   );
 };

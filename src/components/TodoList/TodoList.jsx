@@ -1,15 +1,8 @@
 import "./TodoList.scss";
 import TodoListItem from "../TodoListItem/TodoListItem";
-import { editTodo } from "../../services/todos.service";
-import { getUsers } from "../../services/users.service";
 import { STATUS } from "../../constants/status";
 
-const TodoList = ({ userId, setUsers, todos }) => {
-  const handleCompleteTodo = (userId, todoId) => {
-    editTodo(userId, todoId);
-    getUsers().then((res) => setUsers(res));
-  };
-
+const TodoList = ({ todos }) => {
   return (
     <div className="todoList">
       {todos
@@ -17,10 +10,10 @@ const TodoList = ({ userId, setUsers, todos }) => {
         .map((todo) => {
           return (
             <TodoListItem
+              key={todo.id}
               id={todo.id}
               status={todo.status}
               title={todo.title}
-              handleClick={() => handleCompleteTodo(userId, todo.id)}
             />
           );
         })}
@@ -30,10 +23,10 @@ const TodoList = ({ userId, setUsers, todos }) => {
         .map((todo) => {
           return (
             <TodoListItem
+              key={todo.id}
               id={todo.id}
               status={todo.status}
               title={todo.title}
-              handleClick={() => handleCompleteTodo(userId, todo.id)}
             />
           );
         })}
